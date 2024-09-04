@@ -13,7 +13,7 @@ def pow(a, b):
 
     result = 1
     if b == 0:
-        return result  # Any number to the power of 0 is 1
+        return round(result, 2)  # Any number to the power of 0 is 1
 
     if b < 0:
         a = 1 / a  # Handle negative exponents
