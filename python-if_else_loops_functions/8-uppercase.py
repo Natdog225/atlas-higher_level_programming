@@ -2,14 +2,16 @@
 
 def uppercase(str):
     """Prints a string in uppercase followed by a new line.
-
     Args:
         str: The string to convert and print.
     """
 
+    result = ""  # Initialize an empty string
+
     for c in str:
         if ord(c) >= 97 and ord(c) <= 122:  # Check if lowercase
-            print(chr(ord(c) - 32), end="")  # Convert to uppercase
+            result += chr(ord(c) - 32)  # Convert to uppercase and append
         else:
-            print(c, end="")  # Print non-lowercase characters as is
-    print()  # Print a new line
+            result += c  # Append non-lowercase characters as is
+
+    print(result)g
