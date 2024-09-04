@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 def best_score(a_dictionary):
-    if a_dictionary is None or not a_dictionary:  # Check if dictionary is None or empty
+    if a_dictionary is None or not a_dictionary:
         return None
 
     best_key = None
