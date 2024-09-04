@@ -7,7 +7,7 @@ def divisible_by_2(my_list=[]):
         my_list: The list of integers.
 
     Returns:
-        A new list with True or False for each element, 
+        A new list with True or False for each element
         indicating divisibility by 2.
     """
 
