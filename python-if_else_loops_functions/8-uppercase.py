@@ -6,12 +6,11 @@ def uppercase(str):
         str: The string to convert and print.
     """
 
-    result = ""  # Initialize an empty string
-
+    result = ""
     for c in str:
-        if ord(c) >= 97 and ord(c) <= 122:  # Check if lowercase
-            result += chr(ord(c) - 32)  # Convert to uppercase and append
+        if ord(c) >= 97 and ord(c) <= 122:
+            result += "{:c}".format(ord(c) - 32)
         else:
-            result += c  # Append non-lowercase characters as is
+            result += c
 
-    print(result)g
+    print(result)
