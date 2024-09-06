@@ -1,0 +1,1 @@
+This project has to do with squares and object oriented programming. 
