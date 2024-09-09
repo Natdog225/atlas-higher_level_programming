@@ -1,0 +1,1 @@
+This project has to do with test driven things. Ideally creating tests to test the programs functionality against weird test cases and whatnot. It's a good time had by all.
