@@ -1,114 +1,110 @@
 """
-This module contains test cases for the `matrix_divided` function.
+This module contains doctests for the `matrix_divided` function.
 """
 
-from 2-matrix_divided import matrix_divided
 
 def test_basic_division():
     """
     Tests basic matrix division with a positive divisor.
+
+    >>> matrix = [
+    ...     [1, 2, 3],
+    ...     [4, 5, 6]
+    ... ]
+    >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+    >>> matrix_divided(matrix, 3)
+    [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
     """
-    matrix = [
-        [1, 2, 3],
-        [4, 5, 6]
-    ]
-    expected = [
-        [0.33, 0.67, 1.0],
-        [1.33, 1.67, 2.0]
-    ]
-    assert matrix_divided(matrix, 3) == expected
 
 
 def test_negative_divisor():
     """
     Tests matrix division with a negative divisor.
+
+    >>> matrix = [
+    ...     [10, -20, 30],
+    ...     [-40, 50, -60]
+    ... ]
+    >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+    >>> matrix_divided(matrix, -3)
+    [[-3.33, 6.67, -10.0], [13.33, -16.67, 20.0]]
     """
-    matrix = [
-        [10, -20, 30],
-        [-40, 50, -60]
-    ]
-    expected = [
-        [-3.33, 6.67, -10.0],
-        [13.33, -16.67, 20.0]
-    ]
-    assert matrix_divided(matrix, -3) == expected
 
 
 def test_float_division():
     """
     Tests matrix division with a float divisor.
+
+    >>> matrix = [
+    ...     [1.5, 2.8, 3.2],
+    ...     [4.1, 5.6, 6.9]
+    ... ]
+    >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+    >>> matrix_divided(matrix, 3)
+    [[0.5, 0.93, 1.07], [1.37, 1.87, 2.3]]
     """
-    matrix = [
-        [1.5, 2.8, 3.2],
-        [4.1, 5.6, 6.9]
-    ]
-    expected = [
-        [0.5, 0.93, 1.07],
-        [1.37, 1.87, 2.3]
-    ]
-    assert matrix_divided(matrix, 3) == expected
 
 
 def test_zero_division():
     """
     Tests raising a ZeroDivisionError when dividing by zero.
+
+    >>> matrix = [[1, 2], [3, 4]]
+    >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+    >>> matrix_divided(matrix, 0)
+    Traceback (most recent call last):
+    ZeroDivisionError: division by zero
     """
-    matrix = [[1, 2], [3, 4]]
-    try:
-        matrix_divided(matrix, 0)
-        assert False, "Expected ZeroDivisionError"
-    except ZeroDivisionError as e:
-        assert str(e) == "division by zero"
 
 
 def test_invalid_matrix_type():
     """
     Tests raising a TypeError when the matrix is not a list of lists.
+
+    >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+    >>> matrix_divided("not a matrix", 3)
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
     """
-    try:
-        matrix_divided("not a matrix", 3)
-        assert False, "Expected TypeError"
-    except TypeError as e:
-        assert str(e) == "matrix must be a matrix (list of lists) of integers/floats"
 
 
 def test_uneven_rows():
     """
     Tests raising a TypeError when rows have different sizes.
+
+    >>> matrix = [
+    ...     [1, 2, 3],
+    ...     [4, 5]
+    ... ]
+    >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+    >>> matrix_divided(matrix, 3)
+    Traceback (most recent call last):
+    TypeError: Each row of the matrix must have the same size
     """
-    matrix = [
-        [1, 2, 3],
-        [4, 5]
-    ]
-    try:
-        matrix_divided(matrix, 3)
-        assert False, "Expected TypeError"
-    except TypeError as e:
-        assert str(e) == "Each row of the matrix must have the same size"
 
 
 def test_invalid_element_type():
     """
     Tests raising a TypeError when matrix elements are not numbers.
+
+    >>> matrix = [
+    ...     [1, 2, "hello"],
+    ...     [4, 5, 6]
+    ... ]
+    >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+    >>> matrix_divided(matrix, 3)
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats
     """
-    matrix = [
-        [1, 2, "hello"],
-        [4, 5, 6]
-    ]
-    try:
-        matrix_divided(matrix, 3)
-        assert False, "Expected TypeError"
-    except TypeError as e:
-        assert str(e) == "matrix must be a matrix (list of lists) of integers/floats"
 
 
 def test_invalid_div_type():
     """
     Tests raising a TypeError when the divisor is not a number.
+
+    >>> matrix = [[1, 2], [3, 4]]
+    >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+    >>> matrix_divided(matrix, "not a number")
+    Traceback (most recent call last):
+    TypeError: div must be a number
     """
-    matrix = [[1, 2], [3, 4]]
-    try:
-        matrix_divided(matrix, "not a number")
-        assert False, "Expected TypeError"
-    except TypeError as e:
-        assert str(e) == "div must be a number"

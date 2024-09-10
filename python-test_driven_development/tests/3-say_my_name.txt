@@ -1,65 +1,55 @@
 """
-This module contains test cases for the `say_my_name` function.
+This module contains doctests for the `say_my_name` function.
 """
 
-from 3-say_my_name import say_my_name
 
 def test_valid_names():
     """
     Tests printing with valid first and last names.
-    """
-    import io
-    import contextlib
 
-    with io.StringIO() as buf, contextlib.redirect_stdout(buf):
-        say_my_name("John", "Doe")
-        output = buf.getvalue()
-    assert output == "My name is John Doe\n"
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+    >>> say_my_name("John", "Doe")
+    My name is John Doe
+    """
 
 
 def test_first_name_only():
     """
     Tests printing with only a first name.
-    """
-    import io
-    import contextlib
 
-    with io.StringIO() as buf, contextlib.redirect_stdout(buf):
-        say_my_name("Alice")
-        output = buf.getvalue()
-    assert output == "My name is Alice \n"
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+    >>> say_my_name("Alice")
+    My name is Alice 
+    """
 
 
 def test_empty_last_name():
     """
     Tests printing with an empty last name.
-    """
-    import io
-    import contextlib
 
-    with io.StringIO() as buf, contextlib.redirect_stdout(buf):
-        say_my_name("Bob", "")
-        output = buf.getvalue()
-    assert output == "My name is Bob \n"
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+    >>> say_my_name("Bob", "")
+    My name is Bob 
+    """
 
 
 def test_type_error_first_name():
     """
     Tests raising a TypeError when the first name is not a string.
+
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+    >>> say_my_name(123, "Smith")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
     """
-    try:
-        say_my_name(123, "Smith")
-        assert False, "Expected TypeError"
-    except TypeError as e:
-        assert str(e) == "first_name must be a string"
 
 
 def test_type_error_last_name():
     """
     Tests raising a TypeError when the last name is not a string.
+
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+    >>> say_my_name("Jane", 456)
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
     """
-    try:
-        say_my_name("Jane", 456)
-        assert False, "Expected TypeError"
-    except TypeError as e:
-        assert str(e) == "last_name must be a string"
