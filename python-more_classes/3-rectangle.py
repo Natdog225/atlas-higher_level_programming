@@ -103,27 +103,29 @@ class Rectangle:
 
     def perimeter(self):
         """
-        Calculates and returns the perimeter of the rectangle.
+        Calculates and return  the perimeter of a Rectangle
 
         Returns:
-            int: The perimeter of the rectangle (2 * (width + height)), 
-            or 0 if either width or height is 0.
+            int: The perimeter of the rectangle (2 * (width + height)),
+                 or 0 if either width or height is 0
         """
-        if self.__width == 0 or self.__height == 0:
+        if self.__height == 0 or self.__width == 0:
             return 0
         return 2 * (self.__width + self.__height)
 
     def __str__(self):
         """
-        Returns a string representation of the rectangle using '#' characters.
-
-        Returns:
-            str: The string representation of the rectangle, 
-            or an empty string if width or height is 0.
+        Returns an informal string representation
         """
-        if self.__width == 0 or self.__height == 0:
-            return ""
-        return "\n".join(["#" * self.__width for _ in range(self.__height)])
+        if self.__height == 0 or self.__width == 0:
+            return ''
+        record_str = ''
+        for i in range(self.__height):
+            for j in range(self.__width):
+                record_str += '#'
+            if i < self.__height - 1:
+                record_str += '\n'
+        return record_str
 
     def __repr__(self):
         """
