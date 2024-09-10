@@ -1,10 +1,3 @@
-#!/usr/bin/python3
-"""
-This module provides a function to divide all elements of a matrix
-by a given divisor.
-"""
-
-
 def matrix_divided(matrix, div):
     """
     Divides all elements of a matrix
@@ -35,11 +28,11 @@ def matrix_divided(matrix, div):
         raise TypeError("div must be a number")
 
     if div == 0:
-        raise ZeroDivisionError("Division by zero")
+        raise ZeroDivisionError("division by zero")
 
     new_matrix = []
     for row in matrix:
         new_row = [round(num / div, 2) for num in row]
         new_matrix.append(new_row)
 
-        return new_matrix
+    return new_matrix
