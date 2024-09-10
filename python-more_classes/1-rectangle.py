@@ -6,6 +6,7 @@ private width and height attributes, along with property setters
 
 class Rectangle:
 
+
     """
     A class that represents a rectangle.
 
