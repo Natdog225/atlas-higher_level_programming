@@ -4,9 +4,8 @@ This module defines a class 'Rectangle' representing a rectangle shape with
 private width and height attributes, along with property setters
 """
 
+
 class Rectangle:
-
-
     """
     A class that represents a rectangle.
 
