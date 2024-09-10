@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This module defines a class 'Rectangle' representing a rectangle shape 
+This module defines a class 'Rectangle' representing a rectangle shape
 with private width and height attributes, input validation, and
 methods for calculating area and perimeter,
 along with string representations for printing
@@ -21,7 +21,7 @@ class Rectangle:
 
     Methods:
         area(self): Calculates and returns the area
-        perimeter(self): Calculates and returns the perimeter 
+        perimeter(self): Calculates and returns the perimeter
 
     Raises:
         TypeError: If the assigned `width` or `height` is not an integer
@@ -109,7 +109,7 @@ class Rectangle:
         Calculates and returns the perimeter of the rectangle
 
         Returns:
-            int: The perimeter of the rectangle (2 * (width + height)), 
+            int: The perimeter of the rectangle (2 * (width + height)),
                  or 0 if either width or height is 0
         """
         if self.__width == 0 or self.__height == 0:
@@ -121,7 +121,7 @@ class Rectangle:
         Returns a string representation of the rectangle using '#' characters
 
         Returns:
-            str: The string representation of the rectangle, 
+            str: The string representation of the rectangle,
             or an empty string if width or height is 0
         """
         if self.__width == 0 or self.__height == 0:
@@ -133,7 +133,7 @@ class Rectangle:
         Returns a formal string representation of the rectangle object
 
         Returns:
-            str: A string that can be used to recreate the object, 
+            str: A string that can be used to recreate the object,
                  in the format `Rectangle(width, height)`
         """
         return f"Rectangle({self.__width}, {self.__height})"
