@@ -2,7 +2,7 @@
 This module contains test cases for the `add_integer` function.
 """
 
-import say_my_name
+from 0-add_integer import add_integer
 
 def test_add_integers():
     """

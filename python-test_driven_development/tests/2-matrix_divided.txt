@@ -2,7 +2,7 @@
 This module contains test cases for the `matrix_divided` function.
 """
 
-import 2-matrix_divided.py
+from 2-matrix_divided import matrix_divided
 
 def test_basic_division():
     """

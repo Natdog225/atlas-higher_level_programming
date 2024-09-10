@@ -2,7 +2,7 @@
 This module contains test cases for the `say_my_name` function.
 """
 
-import 3-say_my_name.py
+from 3-say_my_name import say_my_name
 
 def test_valid_names():
     """
