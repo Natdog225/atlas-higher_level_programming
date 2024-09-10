@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-This module provides a function to print text with indentation after specific characters.
+This module provides a function to print text with indentation after
+certain characters.
 """
 
 
