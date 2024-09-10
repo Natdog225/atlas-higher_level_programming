@@ -1,0 +1,65 @@
+"""
+This module contains test cases for the `say_my_name` function.
+"""
+
+import 3-say_my_name.py
+
+def test_valid_names():
+    """
+    Tests printing with valid first and last names.
+    """
+    import io
+    import contextlib
+
+    with io.StringIO() as buf, contextlib.redirect_stdout(buf):
+        say_my_name("John", "Doe")
+        output = buf.getvalue()
+    assert output == "My name is John Doe\n"
+
+
+def test_first_name_only():
+    """
+    Tests printing with only a first name.
+    """
+    import io
+    import contextlib
+
+    with io.StringIO() as buf, contextlib.redirect_stdout(buf):
+        say_my_name("Alice")
+        output = buf.getvalue()
+    assert output == "My name is Alice \n"
+
+
+def test_empty_last_name():
+    """
+    Tests printing with an empty last name.
+    """
+    import io
+    import contextlib
+
+    with io.StringIO() as buf, contextlib.redirect_stdout(buf):
+        say_my_name("Bob", "")
+        output = buf.getvalue()
+    assert output == "My name is Bob \n"
+
+
+def test_type_error_first_name():
+    """
+    Tests raising a TypeError when the first name is not a string.
+    """
+    try:
+        say_my_name(123, "Smith")
+        assert False, "Expected TypeError"
+    except TypeError as e:
+        assert str(e) == "first_name must be a string"
+
+
+def test_type_error_last_name():
+    """
+    Tests raising a TypeError when the last name is not a string.
+    """
+    try:
+        say_my_name("Jane", 456)
+        assert False, "Expected TypeError"
+    except TypeError as e:
+        assert str(e) == "last_name must be a string"
