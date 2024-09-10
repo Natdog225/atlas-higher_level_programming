@@ -1,0 +1,54 @@
+"""
+This module contains doctests for the `print_square` function.
+"""
+
+
+def test_valid_sizes():
+    """
+    Tests printing squares with valid sizes.
+    """
+    import io
+    import contextlib
+
+    with io.StringIO() as buf, contextlib.redirect_stdout(buf):
+        print_square(3)
+        output = buf.getvalue()
+    assert output == "###\n###\n###\n"
+
+    with io.StringIO() as buf, contextlib.redirect_stdout(buf):
+        print_square(0)
+        output = buf.getvalue()
+    assert output == "\n"
+
+    with io.StringIO() as buf, contextlib.redirect_stdout(buf):
+        print_square(1)
+        output = buf.getvalue()
+    assert output == "#\n"
+
+
+def test_invalid_size_type():
+    """
+    Tests raising a TypeError when size is not an integer.
+    """
+    try:
+        print_square(3.14)
+        assert False, "Expected TypeError"
+    except TypeError as e:
+        assert str(e) == "size must be an integer"
+
+    try:
+        print_square("invalid")
+        assert False, "Expected TypeError"
+    except TypeError as e:
+        assert str(e) == "size must be an integer"
+
+
+def test_negative_size():
+    """
+    Tests raising a ValueError when size is negative.
+    """
+    try:
+        print_square(-5)
+        assert False, "Expected ValueError"
+    except ValueError as e:
+        assert str(e) == "size must be >= 0"

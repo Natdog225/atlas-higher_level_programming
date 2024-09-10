@@ -1,0 +1,74 @@
+"""
+This module contains doctests for the `text_indentation` function.
+"""
+
+
+def test_basic_indentation():
+    """
+    Tests basic text indentation with '.', '?', and ':'.
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+    >>> text_indentation("Hello. How are you? This is a test: with indentation.")
+    Hello.
+
+    How are you?
+
+    This is a test:
+
+    with indentation.
+    """
+
+
+def test_no_special_characters():
+    """
+    Tests text without any special characters.
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+    >>> text_indentation("This is a simple sentence without any special characters.")
+    This is a simple sentence without any special characters.
+    """
+
+
+def test_multiple_special_characters():
+    """
+    Tests text with multiple consecutive special characters.
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+    >>> text_indentation("What?? Are you serious?!?")
+    What??
+
+    Are you serious?!?
+    """
+
+
+def test_leading_and_trailing_spaces():
+    """
+    Tests handling of leading and trailing spaces.
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+    >>> text_indentation("   Hello.   How are you?   ")
+    Hello.
+
+    How are you?
+    """
+
+
+def test_empty_text():
+    """
+    Tests handling of empty text.
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+    >>> text_indentation("")
+
+    """
+
+
+def test_type_error():
+    """
+    Tests raising a TypeError when text is not a string.
+
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+    >>> text_indentation(123)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+    """
