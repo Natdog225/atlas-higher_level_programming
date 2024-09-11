@@ -145,7 +145,7 @@ class FeralGhoul(NPC):
 
     def attack(self, target):
         """
-        Feral Ghouls have a chance to inflict radiation poisoning on their target.
+        Feral Ghouls have a chance to inflict radiation poisoning which will not be a good time.
         """
         super().attack(target, Weapon("Claws", "melee", 12))  # Base claw attack
         if random.random() < 0.3:  # 30% chance to inflict radiation poisoning
@@ -201,7 +201,7 @@ class Raider(NPC):
 
 class Weapon:
     """
-    Represents a weapon in the RPG game.
+    Represents a weapon.
     """
 
     def __init__(
@@ -215,12 +215,11 @@ class Weapon:
         crit_multiplier=1.5,
     ):
         """
-        Initializes a Weapon instance.
+        Initializes a Weapon.
 
         Args:
             name (str): The name of the weapon.
             damage_type (str): The type of damage the weapon inflicts (e.g., "melee", "ballistic", "energy")
-            Which I have not added yet.
             damage (int): The base damage the weapon deals.
             range (int,): The weapon's range in units (0 for melee). Defaults to 0.
             accuracy (float): The probability of hitting the target (0.0 to 1.0).
@@ -293,7 +292,7 @@ if __name__ == "__main__":
         print("Invalid enemy choice!")
         exit()
 
-    # Create weapons I dunno why I didn't create a lightsaber...
+    # Create weapons, I dunno why I didn't create a lightsaber...
     knife = Weapon("Combat Knife", "melee", 15)
     laser_rifle = Weapon(
         "Laser Rifle", "energy", 30, range=20, accuracy=0.8, crit_chance=0.2
