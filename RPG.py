@@ -42,7 +42,7 @@ class Creature:
             if isinstance(self, PlayerCharacter):
                 hit_chance += (
                     self.special["Perception"] - 5
-                ) * 0.05  # Adjust based on Perception which has logic I dunno yet.
+                ) * 0.05  # Adjust based on Perception which has logic I dunno yet but itsa cookin'.
 
         if random.random() > hit_chance:
             print(f"{self.name}'s attack with {weapon.name} missed!")
@@ -56,7 +56,7 @@ class Creature:
         # Critical hit calculation (Luck influences crit chance)
         crit_chance = weapon.crit_chance
         if isinstance(self, PlayerCharacter):
-            crit_chance += (self.special["Luck"] - 5) * 0.01  # Adjust based on Luck
+            crit_chance += (self.special["Luck"] - 5) * 0.01
 
         if random.random() <= crit_chance:
             damage *= weapon.crit_multiplier
@@ -96,7 +96,7 @@ class PlayerCharacter(Creature):
             ac (int): The player character's armor class.
         """
         super().__init__(name, hp, ac)
-        self.special = {  # S.P.E.C.I.A.L. stats
+        self.special = {  # S.P.E.C.I.A.L. stats, all 5 currently. Will implement some way to vary them eventually maybe.
             "Strength": 5,
             "Perception": 5,
             "Endurance": 5,
@@ -194,7 +194,7 @@ class Raider(NPC):
         Raider has a gun and can probably kill you if you are not cool
         """
         if random.random() < 0.1:  # 10% chance of headshot
-            super().attack(target, Weapon("Headshot", "range", 25, crit_chance=0.1))
+            super().attack(target, Weapon("Headshot", "range", 35, crit_chance=0.1))
         else:
             super().attack(target, Weapon("Gunshot", "range", 15, crit_chance=0.2))
 
