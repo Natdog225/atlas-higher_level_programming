@@ -33,6 +33,7 @@ void display_reels(int spin_result)
 	}
 }
 
+// Function prototype for main
 int main(void);
 
 int main()
@@ -52,20 +53,22 @@ int main()
 	strcpy(slot_machine[4], "  \\  O  O  O  /");
 	strcpy(slot_machine[5], "   '-----------'");
 
-	float balance = 20.0;
+	float balance = 40.0;
 	int bet_credits, winnings_credits;
-	float bet_amount, winnings_amount;
+	float bet_amount;
 	int spin_result;
 	char bet_input[10];
 
+	printf("Your balance is: $%.2f (%.0f credits)\n", balance, balance / CREDIT_VALUE);
+
 	while (1)
 	{
-		printf("Your balance: $%.2f (%.0f credits)\n", balance, balance / CREDIT_VALUE);
 		printf("Enter the number of credits to bet (0 to cash out): ");
+
 		fgets(bet_input, 10, stdin);
 		bet_credits = atoi(bet_input);
 
-		bet_amount = bet_credits * CREDIT_VALUE;
+		bet_amount = (float)(bet_credits * CREDIT_VALUE); // Explicit cast to float
 
 		if (bet_credits == 0)
 		{
@@ -91,28 +94,33 @@ int main()
 		if (spin_result < 50)
 		{
 			winnings_credits = 0;
-			printf("You lose! YOU WIN NOTHING! GOOD DAY SIR/MA'AM Spin result: %d\n", spin_result);
+			printf("You lose! YOU WIN NOTHING! GOOD DAY SIR/MA'AM Spin result: %d\n Your balance is now: $%.2f (%.0f credits)\n\n", spin_result, balance, balance / CREDIT_VALUE);
 		}
 		else if (spin_result <= 74)
 		{
 			winnings_credits = bet_credits;
-			balance += winnings_credits * CREDIT_VALUE; // Fix the balance update
-			printf("You get your bet back! Spin result: %d\nYour balance is now: $%.2f (%.0f credits)\n",
+			balance += (float)(winnings_credits * CREDIT_VALUE); // Fix the balance update. Explicit cast to float
+			printf("You get your bet back! Spin result: %d\nYour balance is now: $%.2f (%.0f credits)\n\n",
 				   spin_result, balance, balance / CREDIT_VALUE);
 		}
 		else if (spin_result < 95)
 		{
 			winnings_credits = 2 * bet_credits;
-			balance += winnings_credits * CREDIT_VALUE;
-			printf("You win double your bet! Spin result: %d\nYour balance is now: $%.2f (%.0f credits)\n",
+			balance += (float)(winnings_credits * CREDIT_VALUE);
+			printf("You win double your bet! Spin result: %d\nYour balance is now: $%.2f (%.0f credits)\n\n",
 				   spin_result, balance, balance / CREDIT_VALUE);
 		}
 		else
 		{
 			winnings_credits = 3 * bet_credits;
-			balance += winnings_credits * CREDIT_VALUE;
-			printf("You win triple your bet! Spin result: %d\nYour balance is now: $%.2f (%.0f credits)\n",
+			balance += (float)(winnings_credits * CREDIT_VALUE);
+			printf("You win triple your bet! Spin result: %d\nYour balance is now: $%.2f (%.0f credits)\n\n",
 				   spin_result, balance, balance / CREDIT_VALUE);
+		}
+		if (balance == 0)
+		{
+		printf("Game over, Thanks for playing loser.\n");
+		break;
 		}
 	}
 
