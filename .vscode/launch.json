@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/nathan/Repositories/python-classes/atlas-higher_level_programming/fun projects",
-      "program": "/Users/nathan/Repositories/python-classes/atlas-higher_level_programming/fun projects/build/Debug/outDebug"
+      "cwd": "/Users/nathan/Repositories/python-classes/atlas-higher_level_programming/.gitignore/fun projects",
+      "program": "/Users/nathan/Repositories/python-classes/atlas-higher_level_programming/.gitignore/fun projects/build/Debug/outDebug"
     }
   ]
 }
