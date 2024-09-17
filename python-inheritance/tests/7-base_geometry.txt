@@ -1,0 +1,41 @@
+#!/usr/bin/python3
+"""Unittests for the BaseGeometry class."""
+
+import unittest
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+
+class TestBaseGeometry(unittest.TestCase):
+    """Test cases for BaseGeometry."""
+
+    def test_integer_validator_valid_input(self):
+        """Test with valid integer input."""
+        bg = BaseGeometry()
+        bg.integer_validator("width", 5)
+        bg.integer_validator("height", 10)
+
+    def test_integer_validator_invalid_type(self):
+        """Test with invalid input type."""
+        bg = BaseGeometry()
+        with self.assertRaises(TypeError) as cm:
+            bg.integer_validator("name", "John")
+        self.assertEqual(str(cm.exception), "name must be an integer")
+
+        with self.assertRaises(TypeError) as cm:
+            bg.integer_validator("age", 3.14)
+        self.assertEqual(str(cm.exception), "age must be an integer")
+
+    def test_integer_validator_invalid_value(self):
+        """Test with invalid integer values (<= 0)."""
+        bg = BaseGeometry()
+        with self.assertRaises(ValueError) as cm:
+            bg.integer_validator("width", 0)
+        self.assertEqual(str(cm.exception), "width must be greater than 0")
+
+        with self.assertRaises(ValueError) as cm:
+            bg.integer_validator("height", -5)
+        self.assertEqual(str(cm.exception), "height must be greater than 0")
+
+
+if __name__ == '__main__':
+    unittest.main()
