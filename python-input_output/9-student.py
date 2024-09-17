@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """Module representing a student again"""
 
+
 class Student:
     """
     Represents a student.
     """
-
 
     def __init__(self, first_name, last_name, age):
         """
