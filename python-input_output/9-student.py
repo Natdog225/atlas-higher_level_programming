@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+"""Module representing a student again"""
+
 class Student:
     """
     Represents a student.
@@ -16,4 +19,3 @@ class Student:
         Retrieves a dictionary representation of a Student instance.
         """
         return self.__dict__
-    
