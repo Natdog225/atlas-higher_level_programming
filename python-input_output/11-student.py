@@ -18,13 +18,14 @@ class Student:
     def to_json(self, attrs=None):
         """
         Retrieves a dictionary representation of a Student instance.
-        If 'attrs' is a list of strings, only attributes in the list are retrieved.
+        If 'attrs' is a list of strings, only attributes there are retrieved.
         Otherwise, all attributes are retrieved.
         """
         if attrs is None:
             return self.__dict__
         else:
-            return {key: value for key, value in self.__dict__.items() if key in attrs}
+            return {key: value for key, value in self.__dict__.items() 
+                    if key in attrs}
 
     def reload_from_json(self, json):
         """
