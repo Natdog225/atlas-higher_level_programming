@@ -246,9 +246,10 @@ def battle(player, enemy):
         print("1. Attack with Combat Knife")
         print("2. Attack with Laser Rifle")
         print("3. Attack with Rifle")
+        print("4. Attack with Lightsaber")
         # ... (If I felt more creative I would add more actions. )
 
-        action_choice = input("Choose an action (1/2/3): ")
+        action_choice = input("Choose an action (1/2/3/4): ")
 
         if action_choice == "1":
             player.attack(enemy, knife)
@@ -256,6 +257,8 @@ def battle(player, enemy):
             player.attack(enemy, laser_rifle)
         elif action_choice == "3":
             player.attack(enemy, rifle)
+        elif action_choice == "4":
+            player.attack(enemy, lightsaber)
         else:
             print("Invalid action choice!")
 
@@ -292,8 +295,9 @@ if __name__ == "__main__":
         print("Invalid enemy choice!")
         exit()
 
-    # Create weapons, I dunno why I didn't create a lightsaber...
+    # Create weapons, I dunno why I didn't create a lightsaber...jk just did.
     knife = Weapon("Combat Knife", "melee", 15)
+    lightsaber = Weapon("Lightsaber", "melee", 60, range=5, accuracy=0.5, crit_chance=0.4)
     laser_rifle = Weapon(
         "Laser Rifle", "energy", 30, range=20, accuracy=0.8, crit_chance=0.2
     )

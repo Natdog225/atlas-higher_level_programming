@@ -53,7 +53,7 @@ int main()
 	strcpy(slot_machine[4], "  \\  O  O  O  /");
 	strcpy(slot_machine[5], "   '-----------'");
 
-	float balance = 40.0;
+	float balance = 60.0;
 	int bet_credits, winnings_credits;
 	float bet_amount;
 	int spin_result;
