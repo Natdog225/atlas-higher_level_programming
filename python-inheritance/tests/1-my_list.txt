@@ -1,6 +1,8 @@
 """Unittests for the MyList class."""
 
 >>> MyList = __import__('1-my_list').MyList
+>>> import io
+>>> import sys
 
 >>> my_list = MyList()
 >>> my_list.append(1)
@@ -9,23 +11,34 @@
 >>> my_list.append(3)
 >>> my_list.append(5)
 >>> print(my_list)
-
 [1, 4, 2, 3, 5]
+
+>>> captured_output = io.StringIO()
+>>> sys.stdout = captured_output
 >>> my_list.print_sorted()
+>>> sys.stdout = sys.__stdout__
+>>> print(captured_output.getvalue())
 [1, 2, 3, 4, 5]
 >>> print(my_list)
-[1, 4, 2, 3,
- 5]
+[1, 4, 2, 3, 5]
 
 >>> my_list = MyList()
 >>> my_list.extend([3, 1, 4, 2])
+>>> captured_output = io.StringIO()
+>>> sys.stdout = captured_output
 >>> my_list.print_sorted()
+>>> sys.stdout = sys.__stdout__
+>>> print(captured_output.getvalue())
 [1, 2, 3, 4]
 
 >>> my_list = MyList()
 >>> my_list.extend([3, 1, 4, 2])
 >>> original_list = my_list.copy()
+>>> captured_output = io.StringIO()
+>>> sys.stdout = captured_output
 >>> my_list.print_sorted()
+>>> sys.stdout = sys.__stdout__
+>>> print(captured_output.getvalue())
 [1, 2, 3, 4]
 >>> my_list == original_list
 True
