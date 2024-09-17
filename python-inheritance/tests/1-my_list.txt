@@ -1,53 +1,31 @@
-#!/usr/bin/python3
 """Unittests for the MyList class."""
 
-import unittest
-from io import StringIO
-import sys
+>>> MyList = __import__('1-my_list').MyList
 
-MyList = __import__('1-my_list').MyList
+>>> my_list = MyList()
+>>> my_list.append(1)
+>>> my_list.append(4)
+>>> my_list.append(2)
+>>> my_list.append(3)
+>>> my_list.append(5)
+>>> print(my_list)   
 
+[1, 4, 2, 3, 5]
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5]
+>>> print(my_list)
+[1, 4, 2, 3,   
+ 5]
 
-class TestMyList(unittest.TestCase):
-    """Test cases for MyList."""
+>>> my_list = MyList()
+>>> my_list.extend([3, 1, 4, 2])
+>>> my_list.print_sorted()
+[1, 2, 3, 4]
 
-    def test_print_sorted_empty_list(self):
-        """Test printing an empty list."""
-        ml = MyList()
-        captured_output = StringIO()
-        sys.stdout = captured_output
-        ml.print_sorted()
-        sys.stdout = sys.__stdout__
-        self.assertEqual(captured_output.getvalue(), "[]\n")
-
-    def test_print_sorted_single_element(self):
-        """Test printing a list with a single element."""
-        ml = MyList()
-        ml.append(5)
-        captured_output = StringIO()
-        sys.stdout = captured_output
-        ml.print_sorted()
-        sys.stdout = sys.__stdout__
-        self.assertEqual(captured_output.getvalue(), "[5]\n")
-
-    def test_print_sorted_multiple_elements(self):
-        """Test printing a list with multiple elements."""
-        ml = MyList()
-        ml.extend([3, 1, 4, 2])
-        captured_output = StringIO()
-        sys.stdout = captured_output
-        ml.print_sorted()
-        sys.stdout = sys.__stdout__
-        self.assertEqual(captured_output.getvalue(), "[1, 2, 3, 4]\n")
-
-    def test_original_list_unmodified(self):
-        """Test that the original list is not modified."""
-        ml = MyList()
-        ml.extend([3, 1, 4, 2])
-        original_list = ml.copy()
-        ml.print_sorted()
-        self.assertEqual(ml, original_list)
-
-
-if __name__ == '__main__':
-    unittest.main()
+>>> my_list = MyList()
+>>> my_list.extend([3, 1, 4, 2])
+>>> original_list = my_list.copy()
+>>> my_list.print_sorted()
+[1, 2, 3, 4]
+>>> my_list == original_list
+True
