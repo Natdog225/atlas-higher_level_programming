@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+"""Module regarding a student."""
+
+
 class Student:
     """
     Represents a student.
