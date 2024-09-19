@@ -19,7 +19,7 @@ class Rectangle(Base):
             height (int): The height of the rectangle
             x (int): The x coordinate of the rectangle
             y (int): The y coordinate of the rectangle
-            id (int): The id of the rectangle. If `None`, 
+            id (int): The id of the rectangle. If `None`,
             an auto-incrementing id is assigned
         """
         super().__init__(id)
