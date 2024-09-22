@@ -4,6 +4,7 @@ Module containing the `Square` class
 """
 from models.rectangle import Rectangle
 
+
 class Square(Rectangle):
     """
     The Square class, inherits from Rectangle
