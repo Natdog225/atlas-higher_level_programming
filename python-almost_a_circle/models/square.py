@@ -18,8 +18,8 @@ class Square(Rectangle):
             size (int): The size of the square
             x (int): The x coordinate of the square
             y (int): The y coordinate of the square
-            id (int): The id of the square. If `None`,
-              an auto-incrementing id is assigned
+            id (int): The id of the square.
+              If `None`, an auto-incrementing id is assigned
         """
         super().__init__(size, size, x, y, id)
 
@@ -72,3 +72,14 @@ class Square(Rectangle):
                         self.size = value
                     else:
                         setattr(self, key, value)
+
+    def to_dictionary(self):
+        """
+        Returns a dictionary representation of the square
+        """
+        return {
+            "id": self.id,
+            "size": self.size,
+            "x": self.x,
+            "y": self.y
+        }
