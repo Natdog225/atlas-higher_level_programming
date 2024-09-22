@@ -155,3 +155,15 @@ class Rectangle(Base):
             for key, value in kwargs.items():
                 if hasattr(self, key):
                     setattr(self, key, value)
+                    
+def to_dictionary(self):
+    """
+    Returns a dictionary representation of the rectangle
+    """
+    return {
+        "id": self.id,
+        "width": self.__width,
+        "height": self.__height,
+        "x": self.__x,
+        "y": self.__y
+    }
