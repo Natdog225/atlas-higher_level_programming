@@ -57,6 +57,7 @@ class Square(Rectangle):
         """
         if args:
             attrs = ["id", "size", "x", "y"]
+
             for i, arg in enumerate(args):
                 if i < len(attrs):
                     if attrs[i] == "size":
