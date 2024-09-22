@@ -19,8 +19,7 @@ class Rectangle(Base):
             height (int): The height of the rectangle
             x (int): The x coordinate of the rectangle
             y (int): The y coordinate of the rectangle
-            id (int): The id of the rectangle. If `None`,
-              an auto-incrementing id is assigned
+            id (int): The id of the rectangle. If `None`, an auto-incrementing id is assigned
         """
         super().__init__(id)
         self.width = width
@@ -138,15 +137,20 @@ class Rectangle(Base):
             self.id, self.__x, self.__y, self.__width, self.__height
         )
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """
         Updates the attributes of the rectangle
 
         Args:
             *args: Variable length argument list
+            **kwargs: Keyword arguments
         """
         if args:
             attrs = ["id", "width", "height", "x", "y"]
             for i, arg in enumerate(args):
                 if i < len(attrs):
                     setattr(self, attrs[i], arg)
+        else:
+            for key, value in kwargs.items():
+                if hasattr(self, key):
+                    setattr(self, key, value)
