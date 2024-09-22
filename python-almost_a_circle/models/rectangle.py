@@ -1,157 +1,85 @@
 #!/usr/bin/python3
 """
-Module containing the `Rectangle` class
+Module containing the `Square` class
 """
-from models.base import Base
+from models.rectangle import Rectangle
 
 
-class Rectangle(Base):
+class Square(Rectangle):
     """
-    The Rectangle class, inherits from Base
+    The Square class, inherits from Rectangle
     """
 
-    def __init__(self, width, height, x=0, y=0, id=None):
+    def __init__(self, size, x=0, y=0, id=None):
         """
-        Initializes a `Rectangle` object
+        Initializes a `Square` object
 
         Args:
-            width (int): The width of the rectangle
-            height (int): The height of the rectangle
-            x (int): The x coordinate of the rectangle
-            y (int): The y coordinate of the rectangle
-            id (int): The id of the rectangle. If `None`,
-              an auto-incrementing id is assigned
+            size (int): The size of the square
+            x (int): The x coordinate of the square
+            y (int): The y coordinate of the square
+            id (int): The id of the square.
+              If `None`, an auto-incrementing id is assigned
         """
-        super().__init__(id)
-        self.width = width
-        self.height = height
-        self.x = x
-        self.y = y
-
-    @property
-    def width(self):
-        """
-        Getter for the width attribute
-        """
-        return self.__width
-
-    @width.setter
-    def width(self, value):
-        """
-        Setter for the width attribute
-
-        Args:
-            value (int): The new width value
-        """
-        if type(value) is not int:
-            raise TypeError("width must be an integer")
-        if value <= 0:
-            raise ValueError("width must be > 0")
-        self.__width = value
-
-    @property
-    def height(self):
-        """
-        Getter for the height attribute
-        """
-        return self.__height
-
-    @height.setter
-    def height(self, value):
-        """
-        Setter for the height attribute
-
-        Args:
-            value (int): The new height value
-        """
-        if type(value) is not int:
-            raise TypeError("height must be an integer")
-        if value <= 0:
-            raise ValueError("height must be > 0")
-        self.__height = value
-
-    @property
-    def x(self):
-        """
-        Getter for the x attribute
-        """
-        return self.__x
-
-    @x.setter
-    def x(self, value):
-        """
-        Setter for the x attribute
-
-        Args:
-            value (int): The new x value
-        """
-        if type(value) is not int:
-            raise TypeError("x must be an integer")
-        if value < 0:
-            raise ValueError("x must be >= 0")
-        self.__x = value
-
-    @property
-    def y(self):
-        """
-        Getter for the y attribute
-        """
-        return self.__y
-
-    @y.setter
-    def y(self, value):
-        """
-        Setter for the y attribute
-
-        Args:
-            value (int): The new y value
-        """
-        if type(value) is not int:
-            raise TypeError("y must be an integer")
-        if value < 0:
-            raise ValueError("y must be >= 0")
-        self.__y = value
-
-    def area(self):
-        """
-        Calculates the area of the rectangle
-
-        Returns:
-            int: The area of the rectangle
-        """
-        return self.__width * self.__height
-
-    def display(self):
-        """
-        Prints the rectangle to stdout using '#'
-        """
-        for _ in range(self.__y):
-            print()
-        for _ in range(self.__height):
-            print(" " * self.__x + "#" * self.__width)
+        super().__init__(size, size, x, y, id)
 
     def __str__(self):
         """
-        Returns a string representation of the rectangle
+        Returns a string representation of the square
         """
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(
-            self.id, self.__x, self.__y, self.__width, self.__height
+        return "[Square] ({}) {}/{} - {}".format(
+            self.id, self.x, self.y, self.width
         )
+
+    @property
+    def size(self):
+        """
+        Getter for the size attribute
+        """
+        return self.width
+
+    @size.setter
+    def size(self, value):
+        """
+        Setter for the size attribute
+
+        Args:
+            value (int): The new size value
+        """
+        self.width = value
+        self.height = value
 
     def update(self, *args, **kwargs):
         """
-        Updates the attributes of the rectangle
+        Updates the attributes of the square
 
         Args:
             *args: Variable length argument list
             **kwargs: Keyword arguments
         """
         if args:
-            attrs = ["id", "width", "height", "x", "y"]
+            attrs = ["id", "size", "x", "y"]
             for i, arg in enumerate(args):
                 if i < len(attrs):
-                    setattr(self, attrs[i], arg)
+                    if attrs[i] == "size":
+                        self.size = arg
+                    else:
+                        setattr(self, attrs[i], arg)
         else:
             for key, value in kwargs.items():
                 if hasattr(self, key):
-                    setattr(self, key, value)
+                    if key == "size":
+                        self.size = value
+                    else:
+                        setattr(self, key, value)
+
+    def to_dictionary(self):
+        """
+        Returns a dictionary representation of the square
+        """
+        return {
+            "id": self.id,
+            "size": self.size,
+            "x": self.x,
+            "y": self.y
+        }
