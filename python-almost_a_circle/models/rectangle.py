@@ -19,8 +19,8 @@ class Rectangle(Base):
             height (int): The height of the rectangle
             x (int): The x coordinate of the rectangle
             y (int): The y coordinate of the rectangle
-            id (int): The id of the rectangle. If `None`,
-              an auto-incrementing id is assigned
+            id (int): The id of the rectangle.
+              If `None`, an auto-incrementing id is assigned
         """
         super().__init__(id)
         self.width = width
@@ -155,15 +155,15 @@ class Rectangle(Base):
             for key, value in kwargs.items():
                 if hasattr(self, key):
                     setattr(self, key, value)
-                    
-def to_dictionary(self):
-    """
-    Returns a dictionary representation of the rectangle
-    """
-    return {
-        "id": self.id,
-        "width": self.__width,
-        "height": self.__height,
-        "x": self.__x,
-        "y": self.__y
-    }
+
+    def to_dictionary(self):
+        """
+        Returns a dictionary representation of the rectangle
+        """
+        return {
+            "id": self.id,
+            "width": self.__width,
+            "height": self.__height,
+            "x": self.__x,
+            "y": self.__y
+        }
