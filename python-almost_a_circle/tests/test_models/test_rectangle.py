@@ -6,6 +6,7 @@ import unittest
 from models.rectangle import Rectangle
 import io
 import contextlib
+import os
 
 
 class TestRectangle(unittest.TestCase):
@@ -125,7 +126,35 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1.height, 2)
         self.assertEqual(r1.x, 3)
         self.assertEqual(r1.y, 4)
+         
+		 
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as file:
+            content = file.read()
+            self.assertEqual(content, "[]")
 
+        # Test with an empty list as argument
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", "r") as file:
+            content = file.read()
+            self.assertEqual(content, "[]")
+
+
+        os.remove("Rectangle.json")
+
+    def test_load_from_file(self):
+        """Test the load_from_file class method."""
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+        Rectangle.save_to_file(list_rectangles_input)
+
+        list_rectangles_output = Rectangle.load_from_file()
+        self.assertEqual(len(list_rectangles_output),2)
+
+        # Cleanup
+        os.remove("Rectangle.json")
 
 if __name__ == '__main__':
     unittest.main()
+
