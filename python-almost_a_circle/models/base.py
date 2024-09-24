@@ -72,8 +72,8 @@ class Base:
         Returns an instance with all attributes already set
 
         Args:
-            **dictionary (dict): Key-worded arguments 
-            to initialize the instance attributes
+            **dictionary (dict): Key-worded arguments
+              to initialize the instance attributes
         """
         # Create a dummy instance to use its update method
         if cls.__name__ == "Rectangle":
@@ -85,3 +85,16 @@ class Base:
 
         dummy.update(**dictionary)
         return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        Returns a list of instances.
+        """
+        filename = cls.__name__ + ".json"
+        try:
+            with open(filename, "r") as f:
+                list_dicts = Base.from_json_string(f.read())
+                return [cls.create(**d) for d in list_dicts]
+        except FileNotFoundError:
+            return []
