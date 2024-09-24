@@ -31,7 +31,7 @@ class Base:
         Writes the JSON string representation of list_objs to a file
 
         Args:
-            list_objs (list): instances who inherits of Base
+            list_objs (list): A list of instances who inherits of Base
         """
         filename = cls.__name__ + ".json"
         with open(filename, "w") as f:
@@ -65,3 +65,23 @@ class Base:
         if list_dictionaries is None or list_dictionaries == []:
             return "[]"
         return json.dumps(list_dictionaries)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        Returns an instance with all attributes already set
+
+        Args:
+            **dictionary (dict): Key-worded arguments 
+            to initialize the instance attributes
+        """
+        # Create a dummy instance to use its update method
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 1)
+        elif cls.__name__ == "Square":
+            dummy = cls(1)
+        else:
+            dummy = cls()
+
+        dummy.update(**dictionary)
+        return dummy
