@@ -31,7 +31,7 @@ class Base:
         Writes the JSON string representation of list_objs to a file
 
         Args:
-            list_objs (list): A list of instances who inherits of Base
+            list_objs (list): instances who inherits of Base
         """
         filename = cls.__name__ + ".json"
         with open(filename, "w") as f:
@@ -54,7 +54,7 @@ class Base:
             return []
         return json.loads(json_string)
 
-    @staticmethod  # Move the method inside the class
+    @staticmethod
     def to_json_string(list_dictionaries):
         """
         Returns the JSON string representation of list_dictionaries
