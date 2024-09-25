@@ -4,6 +4,9 @@ Unittests for the `Square` class
 """
 import unittest
 from models.square import Square
+import os
+import io
+import contextlib
 
 
 class TestSquare(unittest.TestCase):
