@@ -127,7 +127,16 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(r1.x, 3)
         self.assertEqual(r1.y, 4)
          
-		 
+
+    def test_save_to_file(self):
+        """Test the save_to_file class method."""
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        Rectangle.save_to_file([r1, r2])
+
+        with open("Rectangle.json", "r") as file:
+            content = file.read()
+
         Rectangle.save_to_file(None)
         with open("Rectangle.json", "r") as file:
             content = file.read()
