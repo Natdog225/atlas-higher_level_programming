@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-This module defines a function that lists all State objects that
-contain the letter 'a' from a database.
+This module defines a function that lists all State objects that contain
+the letter 'a' from a database.
 """
 
 import sys
@@ -23,9 +23,9 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Use the 'contains' operator for case-insensitive search
+
     for state in session.query(State).filter(
-        State.name.contains('a')
+        State.name.like('%a%')  # Case-insensitive LIKE
     ).order_by(State.id):
         print("{}: {}".format(state.id, state.name))
 
