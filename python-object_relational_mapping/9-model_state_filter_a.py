@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 This module defines a function that lists all State objects that
-contain the letter 'a' from a database.
+contain the letter 'a' from a database
 """
 
 import sys
