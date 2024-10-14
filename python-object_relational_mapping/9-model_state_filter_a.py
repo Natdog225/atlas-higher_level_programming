@@ -7,7 +7,7 @@ the letter 'a' from a database.
 import sys
 from model_state import Base, State
 
-from sqlalchemy import create_engine, literal
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 
@@ -23,10 +23,16 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Im just trying stuff at this point.
-    for state in session.query(State).filter(
-        State.name.like(literal('%a%'))
-    ).order_by(State.id):
-        print("{}: {}".format(state.id, state.name))
+    # Use a raw SQL query
+    sql_query = """
+        SELECT id, name
+        FROM states
+        WHERE name COLLATE utf8mb4_general_ci LIKE '%a%'
+        ORDER BY id ASC;
+    """
+    result = session.execute(sql_query)
+
+    for row in result:
+        print("{}: {}".format(row[0], row[1]))
 
     session.close()
