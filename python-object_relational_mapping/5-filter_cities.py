@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-This module defines a function that lists all cities from a given state in a database.
+This module defines a function that lists all \
+    cities from a given state in a database.
 """
 
 import MySQLdb
