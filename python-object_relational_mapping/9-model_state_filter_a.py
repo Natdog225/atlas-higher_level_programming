@@ -7,9 +7,8 @@ the letter 'a' from a database.
 import sys
 from model_state import Base, State
 
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, literal
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy import func  # Import func
 
 
 if __name__ == "__main__":
@@ -24,9 +23,9 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Convert both the column and search string to lowercase
+    # Im just trying stuff at this point.
     for state in session.query(State).filter(
-        func.lower(State.name).like('%a%')
+        State.name.like(literal('%a%'))
     ).order_by(State.id):
         print("{}: {}".format(state.id, state.name))
 
