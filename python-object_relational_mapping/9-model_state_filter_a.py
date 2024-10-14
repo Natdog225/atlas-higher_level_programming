@@ -23,8 +23,9 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
+    # Use the 'contains' operator for case-insensitive search
     for state in session.query(State).filter(
-        State.name.ilike('%a%')
+        State.name.contains('a')
     ).order_by(State.id):
         print("{}: {}".format(state.id, state.name))
 
