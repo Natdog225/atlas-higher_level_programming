@@ -24,7 +24,7 @@ def filter_states_by_name():
                          port=3306)
 
     cur = db.cursor()
-    query = "SELECT * FROM states WHERE name = '{:s}' \
+    query = "SELECT * FROM states WHERE BINARY name = '{:s}' \
             ORDER BY id ASC".format(argv[4])
     cur.execute(query)
     rows = cur.fetchall()
