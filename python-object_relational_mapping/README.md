@@ -1,1 +1,1 @@
-This is a project blending python and sql I suppose. 
+This is a project blending python and sql I suppose. And server stuff
