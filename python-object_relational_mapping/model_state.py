@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+"""
+This is a model of the state to base other things off of
+"""
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 
