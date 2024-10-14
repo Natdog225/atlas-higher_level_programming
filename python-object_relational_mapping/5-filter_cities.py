@@ -22,11 +22,15 @@ def filter_cities_by_state():
                          port=3306)
 
     cur = db.cursor()
-    cur.execute("SELECT cities.id, cities.name FROM cities, \
-        states WHERE cities.state_id = states.id AND states.name = %s ORDER BY cities.id ASC", (argv[4],))
+    cur.execute("SELECT cities.name FROM cities \
+                JOIN states ON cities.state_id = states.id \
+                WHERE states.name = %s \
+                ORDER BY cities.id ASC", (argv[4],))
     rows = cur.fetchall()
-    for row in rows:
-        print(row)
+
+    # Extract city names and print them comma-separated
+    city_names = [row[0] for row in rows]
+    print(", ".join(city_names))
 
     cur.close()
     db.close()
