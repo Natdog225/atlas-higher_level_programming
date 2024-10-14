@@ -9,6 +9,7 @@ from model_state import Base, State
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy import func  # Import func
 
 
 if __name__ == "__main__":
@@ -23,9 +24,9 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-
+    # Convert both the column and search string to lowercase
     for state in session.query(State).filter(
-        State.name.like('%a%')  # Case-insensitive LIKE
+        func.lower(State.name).like('%a%')
     ).order_by(State.id):
         print("{}: {}".format(state.id, state.name))
 
