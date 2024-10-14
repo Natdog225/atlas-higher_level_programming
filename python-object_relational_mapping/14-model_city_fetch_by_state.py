@@ -13,10 +13,13 @@ from sqlalchemy.orm import sessionmaker
 
 
 if __name__ == "__main__":
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(sys.argv[1], sys.argv[2], sys.argv[3]), pool_pre_ping=True)
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
+        sys.argv[1], sys.argv[2], sys.argv[3]), pool_pre_ping=True)
     Base.metadata.create_all(engine)
 
-    session = sessionmaker(bind=engine)()
+    Session = sessionmaker(bind=engine)  # Create a Session class
+    session = Session()                 # Create a session object
+
     for city in session.query(City).order_by(City.id).all():
         print("{}: ({}) {}".format(city.state.name, city.id, city.name))
 
