@@ -23,16 +23,10 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Use a raw SQL query
-    sql_query = """
-        SELECT id, name
-        FROM states
-        WHERE name COLLATE utf8mb4_general_ci LIKE '%a%'
-        ORDER BY id ASC;
-    """
-    result = session.execute(sql_query)
-
-    for row in result:
-        print("{}: {}".format(row[0], row[1]))
+    # Use a case-insensitive SQL expression
+    for state in session.query(State).from_statement(
+        "SELECT * FROM states WHERE name LIKE '%a%' ORDER BY id ASC"
+    ).all():
+        print("{}: {}".format(state.id, state.name))
 
     session.close()
