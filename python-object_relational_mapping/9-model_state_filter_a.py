@@ -1,32 +1,39 @@
 #!/usr/bin/python3
 """
-This module defines a function that lists all State objects that contain
-the letter 'a' from a database.
+Script to list all State objects that contain the letter a.
 """
-
-import sys
-from model_state import Base, State
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from model_state import Base, State
+import sys
 
 
-if __name__ == "__main__":
+def filter_states_with_a():
+    """
+    Lists all State objects that contain the letter
+    'a', sorted by states.id in ascending order.
+    """
+
     engine = create_engine(
         'mysql+mysqldb://{}:{}@localhost/{}'.format(
             sys.argv[1], sys.argv[2], sys.argv[3]
-        ),
-        pool_pre_ping=True
+        ), pool_pre_ping=True
     )
-    Base.metadata.create_all(engine)
 
     Session = sessionmaker(bind=engine)
+
     session = Session()
 
-    for state in session.query(State).from_statement(
-        "SELECT * FROM states WHERE name LIKE '%a%' \
-        COLLATE utf8mb4_general_ci ORDER BY id ASC"
-    ).all():
-        print("{}: {}".format(state.id, state.name))
+    states = session.query(State).filter(
+        State.name.like('%a%')
+    ).order_by(State.id).all()
+
+    for state in states:
+        print(f"{state.id}: {state.name}")
 
     session.close()
+
+
+if __name__ == "__main__":
+    filter_states_with_a()
