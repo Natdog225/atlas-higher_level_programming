@@ -25,7 +25,8 @@ def filter_states():
 
     cur = db.cursor()
     # Use a case-sensitive comparison for the name
-    cur.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC")
+    cur.execute\
+        ("SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC")
     rows = cur.fetchall()
     for row in rows:
         print(row)
