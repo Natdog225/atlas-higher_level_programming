@@ -1,0 +1,14 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/nathan/Repositories/python-classes/atlas-higher_level_programming/Random fun projects/slot_machine'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _spin_reel, symObjAddr: 0x0, symBinAddr: 0x100003624, symSize: 0x54 }
+  - { offsetInCU: 0x4D, offset: 0x4D, size: 0x8, addend: 0x0, symName: _reels, symObjAddr: 0x8E0, symBinAddr: 0x100008000, symSize: 0x0 }
+  - { offsetInCU: 0x7E, offset: 0x7E, size: 0x8, addend: 0x0, symName: _three_of_a_kind_payouts, symObjAddr: 0x970, symBinAddr: 0x100008090, symSize: 0x0 }
+  - { offsetInCU: 0xA6, offset: 0xA6, size: 0x8, addend: 0x0, symName: _two_of_a_kind_payouts, symObjAddr: 0x980, symBinAddr: 0x1000080A0, symSize: 0x0 }
+  - { offsetInCU: 0xBB, offset: 0xBB, size: 0x8, addend: 0x0, symName: _cherry_jackpot_payouts, symObjAddr: 0x990, symBinAddr: 0x1000080B0, symSize: 0x0 }
+  - { offsetInCU: 0xD0, offset: 0xD0, size: 0x8, addend: 0x0, symName: _slot_machine, symBinAddr: 0x1000080C0, symSize: 0x0 }
+  - { offsetInCU: 0xF1, offset: 0xF1, size: 0x8, addend: 0x0, symName: _spin_reel, symObjAddr: 0x0, symBinAddr: 0x100003624, symSize: 0x54 }
+  - { offsetInCU: 0x127, offset: 0x127, size: 0x8, addend: 0x0, symName: _display_reels, symObjAddr: 0x54, symBinAddr: 0x100003678, symSize: 0x1E4 }
+  - { offsetInCU: 0x1AD, offset: 0x1AD, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x238, symBinAddr: 0x10000385C, symSize: 0x4A0 }
+...
