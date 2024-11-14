@@ -7,7 +7,10 @@ if (isNaN(numOccurrences)) {
 } else {
   let result = '';
   for (let i = 0; i < numOccurrences; i++) {
-    result += 'C is fun\n'; 
+    result += 'C is fun'; 
+    if (i < numOccurrences - 1) {
+      result += '\n';
+    }
   }
   console.log(result); 
 }
