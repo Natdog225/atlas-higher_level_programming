@@ -2,6 +2,6 @@
 
 class Rectangle {
   // blank for now
-  }
+}
 
-  module.exports = class Rectangle {};
+module.exports = class Rectangle { };
