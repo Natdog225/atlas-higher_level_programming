@@ -276,7 +276,7 @@ def battle(player, enemy):
 
 
 if __name__ == "__main__":
-    # Create the player character could I suggest nathan as the name?
+    # Create the player character
     player_name = input("Enter your character's name, Nathan is a great one: ")
     player = PlayerCharacter(player_name, 100, 10)
     player.special["Strength"] = 10
