@@ -1,0 +1,1 @@
+This is jquery project. Having to do with javascript and css I assume.
