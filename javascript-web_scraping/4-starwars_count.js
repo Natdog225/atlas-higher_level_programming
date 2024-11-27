@@ -14,9 +14,14 @@ request(apiUrl, (error, response, body) => {
 
       // Iterate through each film in the results
       filmsData.results.forEach(film => {
-        if (film.characters.includes(`https://swapi-api.hbtn.io/api/people/${wedgeAntillesId}/`)) {
-          count++;
-        }
+        // Iterate through each character URL in the film's characters array
+        film.characters.forEach(characterUrl => {
+          // Extract the character ID
+          const characterId = characterUrl.split('/').slice(-2, -1)[0]; 
+          if (parseInt(characterId, 10) === wedgeAntillesId) {
+            count++;
+          }
+        });
       });
 
       console.log(count);
